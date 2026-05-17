@@ -104,12 +104,6 @@ UIPatch.cs – Additional UI suppression/restoration
 [MIT](LICENSE) – feel free to fork, "steal" and modify.  
 Credit to me (wersal) are appreciated, but not required.
 
-## Known Issues / Limitations
-
-- EMP‑disabling of some radar components may not persist after unit repair.
-- Visual effects are client‑side; other players will not see the EMP sphere or arcs.
-- The decal monitor is meant for debugging and can be safely ignored.
-
 ## Credits
 
 - Thanks to the Nuclear Option modding community for reverse‑engineering guidance.
