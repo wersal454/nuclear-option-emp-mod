@@ -44,7 +44,7 @@ Adds custom EMP missiles that disable electronics, scramble enemy missiles, and 
 
 ## Configuration
 
-All settings are adjustable via BepInEx config file (`BepInEx/config/com.yourname.empmod.cfg`):
+All settings are adjustable via BepInEx config file (`BepInEx/config/com.wersal.empmod.cfg`):
 
 | Setting | Default | Description |
 |---------|---------|-------------|
@@ -58,7 +58,7 @@ All settings are adjustable via BepInEx config file (`BepInEx/config/com.yournam
 ## Installation
 
 1. Install [BepInEx 5](https://github.com/BepInEx/BepInEx) for Nuclear Option.
-2. Download the latest release from the [Releases](https://github.com/yourname/empmod/releases) page.
+2. Download the latest release from the [Releases](https://github.com/wersal454/Nuclear-Option-EMP-mod/releases) page.
 3. Extract the `plugins` folder into your `Nuclear Option/BepInEx/` directory.
    - The mod files should be inside `BepInEx/plugins/EMP mod NO/`.
 4. Launch the game. EMP weapon variants will be available in the loadout editor.
