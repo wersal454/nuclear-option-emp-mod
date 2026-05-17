@@ -65,16 +65,27 @@ All settings are adjustable via BepInEx config file (`BepInEx/config/com.wersal.
 
 ## Mod Structure (for developers)
 
+
 Plugin.cs – BepInEx plugin entry, config, UI restoration
+
 DecalGlobalMonitor.cs – Debug monitor for decal projectors
+
 Helpers.cs – Small utility MonoBehaviours
+
 Patches/
+
 EncyclopediaPatch.cs – Creates EMP weapon variants
+
 HardpointSpawnPatch.cs – Ensures EMP mounts are active
+
 WeaponManagerSpawnPatch.cs – Diagnostic logging for weapon spawns
+
 MissileDetonatePatch.cs – Core EMP logic, effects, UI disable
+
 ExclusionZonePatch.cs – Custom exclusion zone handling
+
 MissileGuidancePatch.cs – Prevents scrambled missiles from seeking
+
 UIPatch.cs – Additional UI suppression/restoration
 
 ## Building from Source
