@@ -934,11 +934,17 @@ namespace NuclearOptionEmpMod
                                 NightVision.Toggle();
                         }
 
+                        var hitAircraft = hud.aircraft;
                         EmpModPlugin.IsUIEmpDisabled = true;
-                        hud.aircraft.onDisableUnit += (_) =>
+                        System.Action<Unit> restoreOnDeath = null;
+                        restoreOnDeath = (_) =>
                         {
-                            EmpModPlugin.IsUIEmpDisabled = false;
+                            EmpModPlugin.RestorePlayerUI();
+                            EmpModPlugin.IsUIEmpDisabled = true;
+                            if (hitAircraft != null)
+                                hitAircraft.onDisableUnit -= restoreOnDeath;
                         };
+                        hitAircraft.onDisableUnit += restoreOnDeath;
                     }
                     yield break;
                 }

@@ -80,6 +80,28 @@ namespace NuclearOptionEmpMod
                     foreach (Transform child in fh.HMDCenter)
                         child.gameObject.SetActive(true);
                 }
+
+                if (fh.HMDCenter != null)
+                {
+                    Transform powerPanel = fh.HMDCenter.Find("TopRightPanel/PowerPanel");
+                    if (powerPanel != null)
+                    {
+                        powerPanel.Find("chargeBarBackground")?.gameObject.SetActive(true);
+                        powerPanel.Find("charge Label")?.gameObject.SetActive(true);
+                        powerPanel.gameObject.SetActive(true);
+                    }
+                }
+
+                if (fh.HMDCenter != null)
+                {
+                    var mapAnchor = fh.HMDCenter.Find("LowerLeftPanel/HUDMapAnchor");
+                    if (mapAnchor != null)
+                    {
+                        mapAnchor.gameObject.SetActive(true);
+                        foreach (Transform child in mapAnchor)
+                            child.gameObject.SetActive(true);
+                    }
+                }
         
                 string[] pathsToEnable = {
                     "SceneEssentials/Canvas/HUDCanvas/HUDCenter",
@@ -117,31 +139,29 @@ namespace NuclearOptionEmpMod
                 }
             }
         
-            var dynamicMap = SceneSingleton<DynamicMap>.i;
-            if (dynamicMap != null)
+            var mapCanvasGo = GameObject.Find("SceneEssentials/Canvas/GameplayUICanvas/MapCanvas");
+            if (mapCanvasGo != null)
             {
-                dynamicMap.gameObject.SetActive(true);
-                var mapCanvas = dynamicMap.transform.Find("MapCanvas");
-                if (mapCanvas != null) mapCanvas.gameObject.SetActive(true);
-                var virtualMfd = dynamicMap.GetComponentInChildren<VirtualMFD>();
-                if (virtualMfd != null)
+                mapCanvasGo.SetActive(true);
+                foreach (Transform child in mapCanvasGo.transform)
+                    child.gameObject.SetActive(true);
+                var mapBackground = mapCanvasGo.transform.Find("mapBackground");
+                if (mapBackground != null)
                 {
-                    var topInstruments = virtualMfd.transform.Find("TopInstruments");
-                    if (topInstruments != null) topInstruments.gameObject.SetActive(true);
+                    mapBackground.gameObject.SetActive(true);
+                    foreach (Transform bgChild in mapBackground)
+                        bgChild.gameObject.SetActive(true);
                 }
             }
+            var dynamicMap = SceneSingleton<DynamicMap>.i;
+            if (dynamicMap != null && dynamicMap.iconLayer != null)
+                dynamicMap.iconLayer.gameObject.SetActive(true);
         
             var tacScreen = UnityEngine.Object.FindObjectOfType<TacScreen>();
             if (tacScreen != null)
             {
                 var cam = Traverse.Create(tacScreen).Field("cam").GetValue<Camera>();
                 if (cam != null) cam.enabled = true;
-                var screenMat = Traverse.Create(tacScreen).Field("screenMaterial").GetValue<Material>();
-                if (screenMat != null)
-                {
-                    screenMat.SetColor("_EmissionColor", Color.white);
-                    screenMat.SetColor("_BaseColor", Color.white);
-                }
             }
         
             var combatHUD = SceneSingleton<CombatHUD>.i;
